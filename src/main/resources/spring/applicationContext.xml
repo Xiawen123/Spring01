@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans.xsd
+                http://www.springframework.org/schema/context
+                http://www.springframework.org/schema/context/spring-context.xsd
+                http://www.springframework.org/schema/aop
+                http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!--context:全局
+    component：通用注解 ： Controller  Service  Repository
+    所有的类的注解都是默认关闭的。以包扫描的形式 开启 注解-->
+   <context:component-scan base-package="com"></context:component-scan>
+
+
+
+    <!--实例化  目标和增强类
+         IOC  : 控制反转  new Toursinfo(); -->
+    <bean id="tours" class="com.bean.Toursinfo">
+        <!-- DI :依赖注入 调用 set setIntroduce("武汉宏鹏")-->
+        <property name="introduce" value="武汉宏鹏"></property>
+    </bean>
+
+<!--&lt;!&ndash;new ToursServiceImpl();&ndash;&gt;-->
+    <bean id="service" class="com.service.ToursServiceImpl">
+        <!--调用 setDao(new ToursDaoImpl())-->
+          <property name="dao" ref="dao"></property>
+ </bean>
+    <!--     &lt;!&ndash;new ToursDaoImpl();&ndash;&gt;-->
+
+     <bean id="dao" class="com.dao.ToursDaoImpl"/>
+
+
+
+
+</beans>
