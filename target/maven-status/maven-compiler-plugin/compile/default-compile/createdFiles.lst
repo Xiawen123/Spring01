@@ -1,0 +1,6 @@
+com\dao\IToursDao.class
+com\test\TestIOC.class
+com\bean\Toursinfo.class
+com\service\ToursServiceImpl.class
+com\dao\ToursDaoImpl.class
+com\service\ITousService.class
